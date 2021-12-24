@@ -1,0 +1,27 @@
+@startuml "data-architecture-kappa"
+
+[EcommerceApp]
+
+rectangle "Stream Layer"{
+    [SalesTopic]
+}
+
+[SparkStreaming]
+
+rectangle "Service Layer"{
+[AggregatedSales]
+}
+
+[Query]
+
+[BI]
+
+
+EcommerceApp -r-> SalesTopic
+SalesTopic -d-> SparkStreaming
+SparkStreaming -d-> AggregatedSales : "at time t"
+
+AggregatedSales -r-> Query
+Query -r-> BI
+
+@enduml

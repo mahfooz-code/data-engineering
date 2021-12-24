@@ -1,0 +1,28 @@
+@startuml
+
+[BatchLayer] as "Batch Layer"
+
+[ServiceLayer] as "Service Layer"
+
+[EcommerceApp] as "Ecommerce app"
+
+[SparkStreaming] as "SparkStreaming"
+
+[SpeedLayer] as "Speed Layer"
+
+[Query] as "Query"
+
+[BI]
+
+EcommerceApp -u-> BatchLayer
+EcommerceApp -r-> SparkStreaming
+SparkStreaming -r-> SpeedLayer
+BatchLayer -r-> ServiceLayer
+
+ServiceLayer <-r- Query
+SpeedLayer <-r- Query
+
+Query -r-> BI
+
+
+@enduml

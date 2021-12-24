@@ -1,0 +1,22 @@
+@startuml "lakehouse architecture"
+
+rectangle "rect" {
+    database {
+    }
+
+    folder "folder"
+}
+
+
+rectangle "Lakehouse"{
+    [DataLake]
+    [Warehouse]
+}
+
+[BI]
+
+rect -r-> DataLake
+Warehouse -r-> BI
+DataLake -d-> Warehouse
+
+@enduml
